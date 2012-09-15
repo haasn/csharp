@@ -1,9 +1,30 @@
 Short summaries:
 
-Fix: Test using self-inheritance for fixed points of constructors
-FreeMonads: Early experiment using boxed free monads, unsafe!
-Functors: Early experiment demonstrating mu morphisms, unsafe!
-InfEnumerable: Demonstration using Free (,) and Zero for infinite lists
-MonadDict: Demonstration of reifying dictionaries to write real monadic code
-SumTypes: Experiment of using inheritence for sum types, not too great
-Prelude: Small collection of useful types for future use
+Fix:
+  Test using self-inheritance for fixed points of constructors, and how to
+  easily derive Nat and Tree using this method.
+
+FreeMonads: (UNSAFE)
+  Early experiment using boxed free monads Contains a small example of how to
+  build sequential language representations.
+
+Functors: (UNSAFE)
+  Early experiment demonstrating mu morphisms. Contains examples of mu-nats
+  and mu-lists as well as a factorial function using these.
+
+InfEnumerable:
+  Demonstration using Free (,) “finalized lists” as well as how to use a
+  bottom type to statically ensure it to be infinite.
+
+MonadDict:
+  Demonstration of reifying dictionaries to write polymorphic code. This
+  doubles as a safe and usable implementation of monads.
+
+SumTypes:
+  Experiment of using inheritence for sum types, not too great since it doesn't
+  prohibit further descendants of the type, and doesn't allow impredicative
+  polymorphism (eg. Nothing :: forall a. Maybe a).
+
+Prelude:
+  A tiny collection of useful types for future use: Monad/Functor dicts,
+  Sum/Product types as well as 1 and 0.
