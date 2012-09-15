@@ -6,15 +6,18 @@ Fix:
 
 FreeMonads: (UNSAFE)
   Early experiment using boxed free monads Contains a small example of how to
-  build sequential language representations.
+  build sequential language representations. Containts Haskell code for
+  comparison.
 
 Functors: (UNSAFE)
   Early experiment demonstrating mu morphisms. Contains examples of mu-nats
-  and mu-lists as well as a factorial function using these.
+  and mu-lists as well as a factorial function using these. Contains Haskell
+  code for comparison.
 
 InfEnumerable:
   Demonstration using Free (,) “finalized lists” as well as how to use a
-  bottom type to statically ensure it to be infinite.
+  bottom type to statically ensure it to be infinite. Contains Haskell code for
+  comparison.
 
 MonadDict:
   Demonstration of reifying dictionaries to write polymorphic code. This
