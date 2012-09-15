@@ -1,0 +1,9 @@
+Short summaries:
+
+Fix: Test using self-inheritance for fixed points of constructors
+FreeMonads: Early experiment using boxed free monads, unsafe!
+Functors: Early experiment demonstrating mu morphisms, unsafe!
+InfEnumerable: Demonstration using Free (,) and Zero for infinite lists
+MonadDict: Demonstration of reifying dictionaries to write real monadic code
+SumTypes: Experiment of using inheritence for sum types, not too great
+Prelude: Small collection of useful types for future use
