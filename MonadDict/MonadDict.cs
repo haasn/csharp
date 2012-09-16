@@ -80,7 +80,7 @@ class NumDicts {
     , a => x => BD.FromInt (a)
     ); }}
 
-// Higher-order kind
+// Higher-order type
 
 class FunctorDict<A,B,FA,FB> {
   public readonly Func<Func<A,B>,FA,FB> Fmap;
