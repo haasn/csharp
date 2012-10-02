@@ -18,7 +18,7 @@ public class MonadDict<A,MA,MMA> {
 public class Mul<A,B> {
   public readonly A π1;
   public readonly B π2;
-  public Mul(A pi1, B pi2) { π1 = pi1; π2 = pi2; }}
+  public Mul (A pi1, B pi2) { π1 = pi1; π2 = pi2; }}
 
 public class Add<A,B> {
   private bool dir;
@@ -35,4 +35,6 @@ public sealed class Zero {
   private Zero () {}
   public A coerce<A> () { throw new Exception ("⊥"); }}
 
-public struct One {}
+public sealed class One {
+  private One () {}
+  public static readonly One it = new One (); }

@@ -11,12 +11,12 @@ class Rec : Mul<bool, IVar<Rec>> {
 static partial class Program {
   static Queue<Action> ctors;
 
-  static object Ctor (Action a) {
+  static One Ctor (Action a) {
     if (ctors == null)
       ctors = new Queue<Action> ();
 
     ctors.Enqueue (a);
-    return null; }
+    return One.it; }
 
   static Program () {
     foreach (var a in ctors) a(); }
@@ -33,11 +33,11 @@ static partial class Program {
 static partial class Program {
   public static IVar<Rec> a = new IVar<Rec> ();
 
-  static object ctor_a = Ctor (delegate {
+  static One ctor_a = Ctor (delegate {
     a.it = new Rec (true, b); }); }
 
 static partial class Program {
   public static IVar<Rec> b = new IVar<Rec> ();
 
-  static object ctor_b = Ctor (delegate {
+  static One ctor_b = Ctor (delegate {
     b.it = new Rec (false, a); }); }

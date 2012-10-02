@@ -28,7 +28,9 @@ sealed class Zero {
   private Zero () {}
   public A coerce<A> () { throw new Exception ("⊥"); }}
 
-struct One {}
+sealed class One {
+  private One () {}
+  public static readonly One it = new One (); }
 
 // Since the built in one doesn't suffice here, I'll make my own
 // generalized enumerable - technically a free monad of a product
@@ -49,7 +51,7 @@ class MyList<A> : List<A>, IEnumerableF<A, One> {
   public Add<One, Mul<A, IEnumerableF<A, One>>> Next { get { return
     (this.Count == 0)
       // If the list is empty: return the unit (one)
-      ? new Add<One, Mul<A, IEnumerableF<A, One>>> (new One ())
+      ? new Add<One, Mul<A, IEnumerableF<A, One>>> (One.it)
 
       // Otherwise, return the first element + a new enumerable,
       // which is simply the rest of the list (skip 1) wrapped in MyList
