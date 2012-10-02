@@ -1,5 +1,9 @@
 Short summaries:
 
+CoRecursion:
+  Generalized corecursive static variables via simulating multiple static
+  constructors (ie. delayed initializers).
+
 Fix:
   Test using self-inheritance for fixed points of constructors, and how to
   easily derive Nat and Tree using this method.
