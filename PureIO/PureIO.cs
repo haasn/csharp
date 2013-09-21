@@ -39,7 +39,7 @@ class IO<A> {
   public static Func<B,IO<A>> Lift<B> (Func<B,A> f) {
     return a => FFI<B,A> (f, a, b => Pure (b)); }
 
-  public static IO<A> FFI<I,O>(Func<I,O> f, I i, Func<O,IO<A>> o) {
+  private static IO<A> FFI<I,O>(Func<I,O> f, I i, Func<O,IO<A>> o) {
     var io = new IO<A> ();
     io.pure = false;
     io.f = (x => f ((I) x));
