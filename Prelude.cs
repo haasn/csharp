@@ -13,6 +13,12 @@ public class MonadDict<A,MA,MMA> {
 
   public MonadDict (Func<A, MA> eta, Func<MMA, MA> mu) { η = eta; μ = mu; }}
 
+public static class Monad {
+  public static MB Bind<A,MA,B,MB,MMB> ( FunctorDict<A,MB,MA,MMB> fd
+                                       , MonadDict<B,MB,MMB> md
+                                       , MA ma, Func<A,MB> f ) {
+    return md.μ (fd.F (f, ma)); }}
+
 // Type arithmetic
 
 public class Mul<A,B> {
