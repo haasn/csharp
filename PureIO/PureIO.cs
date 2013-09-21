@@ -23,14 +23,13 @@ class IO<A> {
       : IO<B>.FFI<object,object> (fa.f, fa.i, x => fmap (f ,fa.o (x))) ;}
 
   public static MonadDict<A, IO<A>, IO<IO<A>>> MonadD =
-    new MonadDict<A,IO<A>,IO<IO<A>>> ( a => Pure (a) , m => join (m) );
+    new MonadDict<A,IO<A>,IO<IO<A>>> ( a => Pure (a) , m => Join (m) );
 
-  private static IO<A> join (IO<IO<A>> m) { return
-    m.pure ? m.a : FFI<object,object> (m.f, m.i, x => join (m.o (x))); }
+  public static IO<A> Join (IO<IO<A>> m) { return
+    m.pure ? m.a : FFI<object,object> (m.f, m.i, x => Join (m.o (x))); }
 
   public IO<B> Bind<B> (Func<A,IO<B>> f) { return
-    Monad.Bind<A,IO<A>,B,IO<B>,IO<IO<B>>>
-      ( FunctorD<IO<B>> (), IO<B>.MonadD, this, f); }
+    Monad.Bind ( FunctorD<IO<B>> (), IO<B>.MonadD, this, f); }
 
   // Smart constructors
   public static IO<A> Pure (A a) {
@@ -53,6 +52,11 @@ class IO<A> {
     io.o = (x => o ((O) x));
     return io; }}
 
+static class IO {
+  // Linq interface
+  public static IO<C> SelectMany<A,B,C> (this IO<A> m, Func<A,IO<B>> f, Func<A,B,C> g) {
+    return m.Bind (a => f (a).Bind (b => IO<C>.Pure (g (a,b)))); }}
+
 class Program {
   static Func<string, IO<One>> putStrLn = IO<One>.Lift<string>
     ( delegate (string x) { Console.WriteLine (x); return One.it; });
@@ -60,8 +64,12 @@ class Program {
   static IO<string> getLine = IO<string>.Act ( x => Console.ReadLine () );
 
   public static void Main () {
-    var x = getLine.Bind (putStrLn);
+    var main =
+      from _0 in putStrLn ("Please enter your name: ")
+      from name in getLine
+      from _1 in putStrLn ("Hello, " + name + "!")
+      from _2 in putStrLn ("Goodbye, " + name + "!")
+      select One.it;
 
-    x.unsafePerform ();
-    x.unsafePerform ();
+    main.unsafePerform ();
   }}
