@@ -35,3 +35,6 @@ SumTypes:
 Prelude:
   A tiny collection of useful types for future use: Monad/Functor dicts,
   Sum/Product types as well as 1 and 0.
+
+PureIO:
+  Exactly what it says on the tin. Pure I/O via the Monad abstraction, in C#.
