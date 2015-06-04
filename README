@@ -27,6 +27,10 @@ MonadDict:
   Demonstration of reifying dictionaries to write polymorphic code. This
   doubles as a safe and usable implementation of monads.
 
+RoseTree:
+  An example of generic tagged rose trees, which can be re-used to implement
+  pretty much most general purpose trees.
+
 SumTypes:
   Experiment of using inheritence for sum types, not too great since it doesn't
   prohibit further descendants of the type, and doesn't allow impredicative
